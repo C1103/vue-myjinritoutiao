@@ -1,8 +1,13 @@
 <template>
-  <div>首页</div>
+  <Topbar></Topbar>
 </template>
 <script>
-    export default {}
+  import Topbar from './topbar.vue'
+  export default {
+    components: {
+      Topbar
+    }
+  }
 </script>
 <style>
 
