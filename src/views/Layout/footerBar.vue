@@ -1,29 +1,50 @@
 <template>
-  <div class="wrapper">
-        <router-link :to="'/home'" class="bar-item">
-            <!-- <i class="iconfont">&#xe699;</i> -->
-            <div class="bar-ic iconfont ">&#xe699;</div> 
-            <div class="bar-txt">首页</div>
-        </router-link>
-        <router-link :to="'/video'" class="bar-item">
-            <!-- <i class="iconfont">&#xe699;</i> -->
-            <div class="bar-ic iconfont">&#xe629;</div> 
-            <div class="bar-txt">专题</div>
-        </router-link>
-        <router-link :to="'/headline'" class="bar-item">
-            <!-- <i class="iconfont">&#xe699;</i> -->
-            <div class="bar-ic iconfont">&#xe609;</div> 
-            <div class="bar-txt">分类</div>
-        </router-link>
-        <router-link :to="'/account'" class="bar-item">
-            <!-- <i class="iconfont">&#xe699;</i> -->
-            <div class="bar-ic iconfont">&#xe600;</div> 
-            <div class="bar-txt">购物车</div>
-        </router-link>
-  </div>
+ <div class="footer-wrapper">
+   <m-tabbar v-model="select">
+     <m-tabbar-item id="home">
+       <img src="../../assets/images/ic_tab_home_normal.png" alt="" slot="icon-normal">
+       <img src="../../assets/images/ic_tab_home_active.png" alt="" slot="icon-active">
+       首页
+     </m-tabbar-item>
+      <m-tabbar-item id="video">
+       <img src="../../assets/images/ic_tab_video_normal.png" alt="" slot="icon-normal">
+       <img src="../../assets/images/ic_tab_video_active.png" alt="" slot="icon-active">
+       西瓜视频
+     </m-tabbar-item>
+      <m-tabbar-item id="headline">
+       <img src="../../assets/images/ic_tab_headline_normal.png" alt="" slot="icon-normal">
+       <img src="../../assets/images/ic_tab_headline_active.png" alt="" slot="icon-active">
+       微头条
+     </m-tabbar-item>
+      <m-tabbar-item id="account">
+       <img src="../../assets/images/ic_tab_account_normal.png" alt="" slot="icon-normal">
+       <img src="../../assets/images/ic_tab_account_active.png" alt="" slot="icon-active">
+       小视频
+     </m-tabbar-item>
+   </m-tabbar>
+</div>  
 </template>
 <script>
+  import mTabbar from '../../components/footerbar/tabbar.vue'
+  import mTabbarItem from '../../components/footerbar/tabbar-item.vue'
 export default {
+  name: 'footertabbar',
+  components: {
+    mTabbar,
+    mTabbarItem
+  },
+  data() {
+    return {
+      select: 'home'
+    }
+  },
+  watch:{
+    select(curVal,oldVal) {
+      console.log(curVal,oldVal);
+      this.$router.push('/' + curVal);
+    }
+  }
+}
 // data() {
 //     return {
 //       footerBarList: [
@@ -34,93 +55,9 @@ export default {
 //       ]
 //     }
 //   },
-  methods: {
-    tabTo (key) {
-      console.log(key);
-    }
-  }
-}
+  
 </script>
 <style scoped>
-@font-face {
-  font-family: 'iconfont';  /* project id 571188 */
-  src: url('//at.alicdn.com/t/font_571188_kem12gle7882rzfr.eot');
-  src: url('//at.alicdn.com/t/font_571188_kem12gle7882rzfr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_571188_kem12gle7882rzfr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_571188_kem12gle7882rzfr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_571188_kem12gle7882rzfr.svg#iconfont') format('svg');
-}
-.iconfont{
-     font-family:"iconfont" !important;
-    font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    font-size: 2rem;
-    }
-  /* .iconfont {
-    font-family: iconfont;
-  } */
-   .wrapper {
-    width: 100%;
-    height:5rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: space-around;
-  }
 
-  .bar-item {
-    flex: 1;
-    text-decoration:none;
-  }
-  .bar-txt, .bar-ic {
-    font-size: 1rem;
-    color: #666;
-    text-align: center;
-  }
-  .bar-active {
-    color: #b4282d;
-  }
-   .bar-ic {
-    padding-top: 0.5rem;
-    font-size: 2rem;
-  }
-  .bar-txt {
-    font-size: 1rem;
-    padding-top: 0.5rem;
-  }  
-  /* .wrapper {
-        position: absolute;
-        left: 0;bottom: 0;
-        width: 100%;
-        height: 10%;
-        font-size: 0.16rem;
-        z-index: 99;
-        background-color: #fff;
-  }
-
-        .bar-item {
-            width: 25%;
-            float: left;
-            text-align: center;
-            color: black;
-        }
-            .bar-ic {
-                width: 0.22rem;
-                height: 0.22rem;
-            }
-            .bar-txt {
-                width: 100%;
-                font-size: 0.12rem;
-                margin-top: 0.06rem;
-            }
- 
-        .active {
-            color: red;
-        }
-     */
 </style>
  

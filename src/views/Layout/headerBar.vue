@@ -1,53 +1,78 @@
 <template>
-  <div class="header-wrapper">
-        <div class="logo df-c">
-            <!-- <img src="../../assets/images/logo.png" alt="LOGO"> -->
-        </div>
-        <div class="search">
-            <!-- <Icon name="2fangdajing" class="search-icon"></Icon> -->
-            <input type="text" placeholder="搜索些啥呢..." @click="skipSearch" readonly>
-        </div>
+  <div class="wrapper">
+    <div class="scan">
+      <img src="../../assets/images/user.png" alt="">
+      <span class="txt">未登录</span>
     </div>
+    <input class="search"></input>
+    <div class="notice">
+      <img src="../../assets/images/release.png" alt="">
+      <span class="txt">发布</span>
+    </div>
+  </div>
 </template>
-<script>
-    export default{
-        methods:{
-            skipSearch() {}
-        }
-    }
-</script>
 <style scoped>
-    .header-wrapper {
-        height: 0.5rem;
-        background: red
+
+    .wrapper{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 54px;
+        /* padding-top: 10px; */
+        display:flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-around;
+        z-index: 101;
+        background-color: red;
+        opacity: .99;
+        /* line-height: 50px; */
     }
-    .logo {
-        width: 1.3rem;
-        height: 100%;
+    
+    .scan,.notice{
+        height: 50px;
+        width: 56px;
+        text-align: center;
+        color:#fff; 
+        font-weight: 300;  
     }
-    img {
-        width: 1rem;
+    /* img,.txt,.search{
+         text-align: center;  
+        
+          
+    } */
+    img{
+      display: block;
+      padding-left: 16px;
+      padding-top: 6px;
+      height: 24px;
+      width: 24px;
+      
+    }
+    /* .ic{
+        font-size: 16px;
+    } */
+    .txt{
+      font-size: 4px;
+      padding-top: 0;
+      /* margin-bottom: -10px; */
+      /* padding-bottom: 10px; */
     }
     .search {
-        width: e("calc(100% - 1.3rem)");
-        position: relative;
-        color: gray;
-    }
-    .search-icon {
-        position: absolute;
-        left: 0.06rem;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    input {
-        width: 90%;
-        height: 0.3rem;
-        border: none;
-        outline: none;
-         /* background: @bg-color;  */
-        background: #fff;
-        text-indent: 0.3rem;
-        border-radius: 0.04rem;
+        flex: 1;
+        height: 30px;
+        width: 66%;
+        font-size: 13px;
+
+        margin: 8px auto;
+        background-color: #fff;
+        border-radius: 8px;
     }
 
 </style>
+<script>
+export default {
+
+}
+</script>

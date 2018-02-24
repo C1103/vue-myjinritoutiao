@@ -42,8 +42,12 @@ export const constantRouterMap = [
     { 
         path: '/account', 
         meta: { page: true}, 
-        component: _import_('Account/index'),
-        name: '个人中心'
+        component: _import_('Layout/index'),
+        name: '个人中心',
+        redirect: '/',
+        children: [
+            { path: '/', component: _import_('Account/index'), name: '小视频' }
+        ]
     }
 ]
 export const asyncRouterMap = [
