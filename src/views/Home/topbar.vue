@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      topbarList:['关注','热点','视频','头条','头条','头条','头条','头条'],
+      topbarList:['关注','热点','视频','头条','头条','头条','头条','头条','hyzz'],
       homeNewsIndex: 2,
       isTopBarBox: false
     }
