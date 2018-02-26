@@ -2,7 +2,7 @@
     <div class="home-topbar-wrapper">
         <div class="top-menu-bar">
             <swiper>
-                <swiper-slide v-for="(topbar, index) in topbarList" :class="{'active': homeNewsIndex === index}" @click.native="active(index)" :key="index">{{topbarList.title}}</swiper-slide>
+                <swiper-slide v-for="(topbar, index) in topbarList" :class="{'active': homeNewsIndex === index}" @click.native="active(index)" :key="index">{{topbar}}</swiper-slide>
             </swiper>
         </div>
         <a class="top-menu-more-btn df-c" href="javascript:void(0)" @click="isTopBarBox=true"><i class="list-shadow"></i><span class="cross"></span></a>
@@ -29,7 +29,15 @@ export default {
   }
 }
 </script>
-<style>
-
+<style scoped>
+.home-topbar-wrapper {
+    height: .4rem;
+    line-height: .4rem;
+    color: #363636;
+    font-size: .16rem;
+    text-align: center;
+    position: relative;
+    background: #f4f5f6;
+}
 </style>
 

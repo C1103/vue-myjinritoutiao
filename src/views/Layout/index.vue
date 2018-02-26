@@ -23,8 +23,9 @@ export default {
 }
 .main-container {
     width: 100%;
-    height: 80%;
-    position: relative; 
+    height: 630px;
+    position: absolute;
+    top:54px;
 }
     
 </style>

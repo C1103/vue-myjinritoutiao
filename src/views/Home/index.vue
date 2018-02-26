@@ -1,5 +1,8 @@
 <template>
-  <Topbar></Topbar>
+  <article class="home-wrapper">
+    <Topbar></Topbar>
+  </article>
+  
 </template>
 <script>
   import Topbar from './topbar.vue'
@@ -9,6 +12,9 @@
     }
   }
 </script>
-<style>
+<style scoped>
+.home-wrapper {
+    overflow-y: scroll;
+}
 
 </style>
