@@ -33,10 +33,10 @@ img{
 .m-tabbar-item-text{
   display: block;
   font-size: 10px;
-  color: #949494;
+  color: #505050;
 }
 .m-tabbar-item.is-active .m-tabbar-item-text {
-  color: red;
+  color: #f85959;
 }
 
 </style>

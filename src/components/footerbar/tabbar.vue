@@ -20,6 +20,6 @@
     width: 100%;
     overflow: hidden;
     height: 50px;
-    background: #f7f7f7;
+    background: #f4f5f6;
   }
 </style>

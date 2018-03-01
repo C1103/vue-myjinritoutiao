@@ -1,9 +1,9 @@
 <template>
     <div class="home-topbar-wrapper">
         <div class="top-menu-bar">
-             <span v-for="(topbar, index) in topbarList" :class="{'active': topbarIndex === index}" @click="selectTopbar(index)">{{topbar}}</span>
+             <span v-for="(topbar, index) in messList" :class="{'active': topIndex === index}" @click="selectTopbar(index)">{{topbar}}</span>
         </div>
-        <a class="top-menu-more-btn df-c" href="javascript:void(0)" @click="isTopBarBox=true"><i class="list-shadow"></i><span class="cross"></span></a>
+        <div class="top-menu-more-btn" href="javascript:void(0)" @click="isTopBarBox=true"><img src="../../assets/images/menu.png" alt=""><span class="cross"></span></div>
 
         <TopBarBox :class="{'top-bar-active-active': isTopBarBox}" @close="isTopBarBox=false"></TopBarBox>
         
@@ -19,36 +19,47 @@ export default {
   },
   data() {
     return {
-        topbarIndex:2,
-      topbarList:['关注','推荐','热点','南昌','视频','新时代','小视频','图片','问答'],
-      homeNewsIndex: 2,
+      topIndex: 1,
       isTopBarBox: false
     }
   },
-    methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      },
-      selectTopbar(index) {
-          console.log(index);
-          this.topbarIndex = index;
-      }
+  props:[
+    'messList',
+    // 'topbarIndex'
+  ],
+  methods: {
+    handleClick(tab, event) {
+      console.log(tab, event);
+    },
+    selectTopbar(index) {
+      console.log(index);
+      this.topIndex = index;
+      this.$emit("changeTopbar", index)
     }
+  },
+  // afterCreated(){
+  //   this.topIndex = topbarIndex;
+  // }
+  created() {
+    console.log(this.topIndex);
+    this.$emit("changeTopbar", this.topIndex)
+  }
 }
 </script>
 <style scoped>
 .home-topbar-wrapper {
     height: 40px;
     line-height: 40px;
-    color: #363636;
+    color: #222222;
     font-size: 16px;
     text-align: center;
     position: relative;
-     background: #f4f5f6; 
+     background: #ffffff; 
+     border-bottom: 1px solid #e8e8e8;
 }
 .top-menu-bar{
     height: 100%;
-    width: 320px;
+    width: 340px;
     white-space: nowrap;
     overflow: hidden; 
     overflow-x: scroll;
@@ -58,8 +69,19 @@ export default {
     padding: 0 10px;
 }
 .top-menu-bar .active {
-    color: red;
-    font-weight: 400;
+    color: #f85959;
+    font-weight: 700;
+}
+.top-menu-more-btn {
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    height: 30px;
+    width: 30px;
+}
+.top-menu-more-btn img{
+    height: 100%;
+    width: 100%;
 }
 
 </style>
