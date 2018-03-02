@@ -1,5 +1,6 @@
 <template>
- <div class="footer-wrapper">
+  <keep-alive>
+  <div class="footer-wrapper">
    <m-tabbar v-model="select">
      <m-tabbar-item id="home">
        <img src="../../assets/images/ic_tab_home_normal.png" alt="" slot="icon-normal">
@@ -22,7 +23,8 @@
        小视频
      </m-tabbar-item>
    </m-tabbar>
-</div>  
+  </div>  
+  </keep-alive>
 </template>
 <script>
   import mTabbar from '../../components/footerbar/tabbar.vue'
@@ -38,9 +40,12 @@ export default {
       select: 'home'
     }
   },
+  created() {
+    this.select = this.$route.path.slice(1);
+  },
   watch:{
     select(curVal,oldVal) {
-      console.log(curVal,oldVal);
+      // console.log(curVal,oldVal);
       this.$router.push('/' + curVal);
     }
   }

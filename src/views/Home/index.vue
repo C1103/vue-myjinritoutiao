@@ -49,7 +49,7 @@
   
 </template>
 <script>
-  import Topbar from './topbar.vue'
+  import Topbar from '../../components/topbar/Topbar'
   export default {
     components: {
       Topbar,

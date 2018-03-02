@@ -1,7 +1,7 @@
 <template>
-    <div class="home-topbar-wrapper">
+    <div class="topbar-wrapper">
         <div class="top-menu-bar">
-             <span v-for="(topbar, index) in messList" :class="{'active': topIndex === index}" @click="selectTopbar(index)">{{topbar}}</span>
+             <span v-for="(topbar, index) in messList" :class="{'active': topbarIndex === index}" @click="selectTopbar(index)">{{topbar}}</span>
         </div>
         <div class="top-menu-more-btn" href="javascript:void(0)" @click="isTopBarBox=true"><img src="../../assets/images/menu.png" alt=""><span class="cross"></span></div>
 
@@ -11,7 +11,7 @@
 </template>
 <script>
 // import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import TopBarBox from '../../components/topbarbox'
+import TopBarBox from './topbarbox'
 export default {
   components: {
     
@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      topIndex: 1,
+      topbarIndex: 1,
       isTopBarBox: false
     }
   },
@@ -33,21 +33,21 @@ export default {
     },
     selectTopbar(index) {
       console.log(index);
-      this.topIndex = index;
+      this.topbarIndex = index;
       this.$emit("changeTopbar", index)
     }
   },
   // afterCreated(){
-  //   this.topIndex = topbarIndex;
+  //   this.topbarIndex = topbarIndex;
   // }
   created() {
-    console.log(this.topIndex);
-    this.$emit("changeTopbar", this.topIndex)
+    console.log(this.topbarIndex);
+    this.$emit("changeTopbar", this.topbarIndex)
   }
 }
 </script>
 <style scoped>
-.home-topbar-wrapper {
+.topbar-wrapper {
     height: 40px;
     line-height: 40px;
     color: #222222;
