@@ -1,6 +1,6 @@
 <template>
   <article class="home-wrapper">
-    <Topbar :messList='topbarList' @changeTopbar="changebar"></Topbar>
+    <Topbar :messList='topbarList' :selected='selectTopbar' @changeTopbar="changebar"></Topbar>
     <div class="home-container">
       <ul>
         <li v-for="item in news">
@@ -57,7 +57,7 @@
     data() {
       return {
         topbarList:['关注','推荐','热点','南昌','视频','新时代','小视频','图片','问答'],
-        selectTopbar: null,
+        selectTopbar: 1,
         list: [],
         news:{},
       }
@@ -65,17 +65,17 @@
     methods:{
       changebar(index) {
         this.selectTopbar = index;
-        console.log(index)
+        // console.log(index)
       }
     },
     beforeCreate() {
       this.$axios.get('https://www.easy-mock.com/mock/5a97f7de41bb370817801652/jinritoutiao/home/list')
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.list = response.data.data;
         this.$nextTick(() => {
         this.news = this.list[this.topbarList[this.selectTopbar]];
-        console.log(this.news)
+        // console.log(this.news)
         })
       })
       .catch((error) => {

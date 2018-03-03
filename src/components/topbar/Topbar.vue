@@ -19,13 +19,13 @@ export default {
   },
   data() {
     return {
-      topbarIndex: 1,
+      topbarIndex: null,
       isTopBarBox: false
     }
   },
   props:[
     'messList',
-    // 'topbarIndex'
+    'selected'
   ],
   methods: {
     handleClick(tab, event) {
@@ -41,8 +41,9 @@ export default {
   //   this.topbarIndex = topbarIndex;
   // }
   created() {
-    console.log(this.topbarIndex);
-    this.$emit("changeTopbar", this.topbarIndex)
+    // console.log(this.topbarIndex);
+    this.topbarIndex = this.selected;
+    // this.$emit("changeTopbar", this.topbarIndex)
   }
 }
 </script>
