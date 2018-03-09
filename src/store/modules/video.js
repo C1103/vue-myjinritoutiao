@@ -1,23 +1,23 @@
 import axios from 'axios'
 axios.defaults.baseURL = ' https://www.easy-mock.com/mock/5a97f7de41bb370817801652/jinritoutiao';
 
-const home = {
+const video = {
   state: {
     List:[],
   },
   mutations:{
-    HOMELIST(state,res){
+    VIDEOLIST(state,res){
       state.List=res;
     }
   },
   actions:{
-    getHomeList({commit}){
-      axios.get("/home/list").then(data=>{
+    getVideoList({commit}){
+      axios.get("/video/list").then(data=>{
         console.log(data)
         let res= data.data.data;
-        commit("HOMELIST",res)
+        commit("VIDEOLIST",res)
       })
     }
   },    
 }
-export default home
+export default video

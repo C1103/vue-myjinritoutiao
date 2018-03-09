@@ -23,9 +23,9 @@
                     <time v-show="!item.playBol">{{item.time}}</time>
                     <div class="avatar bg-cover-all" v-show="!item.playBol" :style="{backgroundImage: `url(${item.image})`}"></div>
                 </div>
-                <div class="intro df-sb">
+                <div class="intro">
                     <div class="source">{{item.source}}</div>
-                    <div class="box df-c">
+                    <div class="box">
                         <div @click="item.attention = !item.attention">
                             <div v-if="item.attention">已关注</div>
                             <div v-else>
@@ -48,6 +48,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import Topbar from '../../components/topbar/Topbar'
 export default {
   components: {
@@ -57,24 +58,31 @@ export default {
     return {
       topbarList: ['推荐','音乐','搞笑','社会','小品','生活','电影','娱乐','呆萌','游戏','开眼','火山视频','广场舞'],
       selectTopbar: 0,
-      list: [],
+    //   list: [],
       news:{},
     }
   },
-  beforeCreate() {
-      this.$axios.get('https://www.easy-mock.com/mock/5a97f7de41bb370817801652/jinritoutiao/video/list')
-      .then((response) => {
-        console.log(response);
-        this.list = response.data.data;
-        this.$nextTick(() => {
-        this.news = this.list[this.topbarList[this.selectTopbar]];
-        console.log(this.news.length)
-        })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  computed: mapGetters({
+      newsList: 'videoList'
+    }),
+    created () {
+      this.$store.dispatch('getVideoList');
     },
+//   beforeCreate() {
+//       this.$axios.get('https://www.easy-mock.com/mock/5a97f7de41bb370817801652/jinritoutiao/video/list')
+//       .then((response) => {
+//         console.log(response);
+//         this.list = response.data.data;
+//         this.$nextTick(() => {
+//         this.news = this.list[this.topbarList[this.selectTopbar]];
+//         console.log(this.news.length)
+//         })
+//       })
+//       .catch((error) => {
+//         console.log(error)
+//       })
+//     },
+
   methods: {
     changebar(index) {
         this.selectTopbar = index
@@ -107,10 +115,13 @@ export default {
                 })
             }
   },
-
+    
   watch: {
+      newsList(newList, oldList) {
+        this.news = newList[this.topbarList[this.selectTopbar]]
+      },
       selectTopbar(newVal, oldVal) {
-        this.news = this.list[this.topbarList[newVal]]
+        this.news = this.newsList[this.topbarList[newVal]]
       }
     }
 }
@@ -196,14 +207,53 @@ time {
   background-color: rgba(0, 0, 0, .5);
   color: #f4f4f4;
 }
-/* .avatar {
+ /* .avatar {
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 50%;
   position: absolute;
   bottom: -0.1rem;
   left: 0.2rem;
-} */
-
+}  */
+.intro {
+  height: 30px;
+  line-height: 30px;
+  /* float:left; */
+  margin-top: 4px;
+  padding: 0 10px;
+  position: relative;
+}
+.source {
+  position: absolute;
+  left: 20px;
+  font-style: 12px;
+}
+.box {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  line-height: 100%;
+}
+.box span {
+  margin-left: 12px;
+  font-style: 10px;
+  color: #f4f4f4
+}
+/* 
+ .intro {
+            margin-top: 0.1rem;
+            padding: 0 0.1rem;
+            .source {
+                font-size: 0.14rem;
+            }
+            .box {
+                >*{
+                    margin-left: 0.14rem;
+                    font-size: 0.12rem;
+                    color: @font-gray;
+                }
+            }
+        } */
 </style>
 

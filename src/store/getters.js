@@ -1,6 +1,8 @@
 const getters = {
 
-  newsList: state => state.home.List
+  homeList: state => state.home.List,
+  
+  videoList: state => state.video.List
 
 };
 

@@ -5,20 +5,8 @@
 </template>
 
 <script>
-import { mapGetters} from 'vuex'
-
-
 export default {
   name: 'App',
-  computed: mapGetters({
-    products: 'newsList'
-  }),
-  created() {
-      console.log(this.products);
-  },
-  mounted () {
-      this.$store.dispatch('getChannels')
-    }
 }
 </script>
 

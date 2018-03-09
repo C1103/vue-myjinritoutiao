@@ -49,6 +49,7 @@
   
 </template>
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import Topbar from '../../components/topbar/Topbar'
   export default {
     components: {
@@ -58,8 +59,8 @@
       return {
         topbarList:['关注','推荐','热点','南昌','视频','新时代','小视频','图片','问答'],
         selectTopbar: 1,
-        list: [],
-        news:{},
+        // list: [],
+        news: {}
       }
     },
     methods:{
@@ -68,24 +69,33 @@
         // console.log(index)
       }
     },
-    beforeCreate() {
-      this.$axios.get('https://www.easy-mock.com/mock/5a97f7de41bb370817801652/jinritoutiao/home/list')
-      .then((response) => {
-        // console.log(response);
-        this.list = response.data.data;
-        this.$nextTick(() => {
-        this.news = this.list[this.topbarList[this.selectTopbar]];
-        // console.log(this.news)
-        })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      
+    computed: mapGetters({
+      newsList: 'homeList'
+    }),
+    created () {
+      this.$store.dispatch('getHomeList');
     },
+    // beforeCreate() {
+    //   this.$axios.get('https://www.easy-mock.com/mock/5a97f7de41bb370817801652/jinritoutiao/home/list')
+    //   .then((response) => {
+    //     // console.log(response);
+    //     this.list = response.data.data;
+    //     this.$nextTick(() => {
+    //     this.news = this.list[this.topbarList[this.selectTopbar]];
+    //     // console.log(this.news)
+    //     })
+    //   })
+    //   .catch((error) => {
+    //     console.log(error)
+    //   })
+      
+    // },
     watch: {
+      newsList(newList, oldList) {
+        this.news = newList[this.topbarList[this.selectTopbar]]
+      },
       selectTopbar(newVal, oldVal) {
-        this.news = this.list[this.topbarList[newVal]]
+        this.news = this.newsList[this.topbarList[newVal]]
       }
     }
     

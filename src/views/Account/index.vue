@@ -1,8 +1,13 @@
 <template>
-  <div>个人</div>
+  <footerBar></footerBar>    
 </template>
 <script>
-    export default {}
+import { footerBar } from '../Layout/index'
+export default {
+  components: {
+    footerBar
+  }
+}
 </script>
 <style>
     
