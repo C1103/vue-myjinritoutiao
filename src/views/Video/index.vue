@@ -30,15 +30,18 @@
                             <div v-if="item.attention">已关注</div>
                             <div v-else>
                                 <!-- <Icon name="attention"></Icon> -->
+                                <img src="../../assets/images/focus.png" alt="">
                                  <span>关注</span> 
                             </div>
                         </div>
                         <div>
                             <!-- <Icon name="custom-comment"></Icon> -->
+                            <img src="../../assets/images/comment.png" alt="">
                             <span>{{item.comment_num || '评论'}}</span>
                         </div>
                         <div>
                             <!-- <Icon name="More"></Icon> -->
+                            <img src="../../assets/images/more.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -129,16 +132,107 @@ export default {
 <style scoped>
 .topbar-wrapper >>> .top-menu-more-btn{display: none}
 .topbar-wrapper >>> .top-menu-bar {width: 100%}
+</style>
+<style lang="less" scoped>
 
 .video-wrapper {
+  width: 100%;
+  overflow-y: scroll;
+  .video-container {
+    width: 100%;
+    .video{
+      width: 100%;
+      height: 220px;
+      background-color: #000;
+      position: relative;
+      video {
+        width: 100%;
+        display: none;
+        height: 100%;
+      }
+      .canvas-video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        canvas {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .title {
+        position: absolute;
+        left: 0;top: 0;
+        font-size: 16px;
+        width: 100%;
+        color: #f4f4f4;
+        padding: 10px 16px;
+        background: linear-gradient(top , rgba(0, 0, 0, .45), rgba(0, 0, 0, 0) 100%);
+        background: -webkit-linear-gradient(top , rgba(0, 0, 0, .45), rgba(0, 0, 0, 0) 100%);
+        h4{
+          padding: 0; 
+          margin: 0;
+        }
+        small {
+          font-size: 12px;
+        }
+      }
+      .play {
+        position: absolute;
+        left: 50%;top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, .3);
+        border-radius: 50%;
+        z-index: 3;
+        img{
+          width: 50px;
+          height: 50px;
+        }
+      }
+      time {
+        position: absolute;
+        right: 14px; 
+        bottom: 18px;
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, .5);
+        color: #f4f4f4;
+      }
+    }
+    .intro {
+      margin: 8px; 
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; 
+      color: #222222;
+      .source {
+        font-style: 12px;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        div {
+          margin-right: 12px;
+        }
+        img {
+        width: 15px;
+        height: 15px;
+        } 
+      }
+    }
+  }
+}
+
+/* .video-wrapper {
   width: 100%;
   overflow-y: scroll;
 }
 .video-container {
   width: 100%;
-}
-.item {
-  /* margin-top: -20px; */
 }
 .video{
   width: 100%;
@@ -162,7 +256,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-
 .play {
   
   position: absolute;
@@ -171,10 +264,6 @@ export default {
   background-color: rgba(0, 0, 0, .3);
   border-radius: 50%;
   z-index: 3;
-                /* svg {
-                    color: #fff;
-                    font-size: 0.4rem;
-                } */
 }
 .play img{
   width: 50px;
@@ -191,7 +280,7 @@ export default {
   background: -webkit-linear-gradient(top , rgba(0, 0, 0, .45), rgba(0, 0, 0, 0) 100%);
 }
 .title h4{
-   padding: 0; 
+  padding: 0; 
   margin: 0;
 }
 .title small {
@@ -207,53 +296,29 @@ time {
   background-color: rgba(0, 0, 0, .5);
   color: #f4f4f4;
 }
- /* .avatar {
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 50%;
-  position: absolute;
-  bottom: -0.1rem;
-  left: 0.2rem;
-}  */
 .intro {
-  height: 30px;
-  line-height: 30px;
-  /* float:left; */
-  margin-top: 4px;
+  margin: 8px; 
   padding: 0 10px;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  color: #222222;
 }
 .source {
-  position: absolute;
-  left: 20px;
   font-style: 12px;
 }
 .box {
-  position: absolute;
-  right: 0;
-  width: 60px;
-  height: 100%;
-  line-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.box span {
-  margin-left: 12px;
-  font-style: 10px;
-  color: #f4f4f4
+.box div {
+  margin-right: 12px;
 }
-/* 
- .intro {
-            margin-top: 0.1rem;
-            padding: 0 0.1rem;
-            .source {
-                font-size: 0.14rem;
-            }
-            .box {
-                >*{
-                    margin-left: 0.14rem;
-                    font-size: 0.12rem;
-                    color: @font-gray;
-                }
-            }
-        } */
+.box img {
+  width: 15px;
+  height: 15px;
+} */
 </style>
+
 

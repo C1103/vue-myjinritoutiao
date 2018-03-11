@@ -9,7 +9,7 @@
     props: ['value']
   }
 </script>
-<style scoped>
+<style lang="less" scoped>
   .m-tabbar {
     display: flex;
     flex-direction: row;

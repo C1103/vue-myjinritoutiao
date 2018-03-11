@@ -47,8 +47,43 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="less" scoped>
 .topbar-wrapper {
+  height: 40px;
+  line-height: 40px;
+  color: #222222;
+  font-size: 16px;
+  text-align: center;
+  position: relative;
+  background: #ffffff; 
+  border-bottom: 1px solid #e8e8e8;
+  .top-menu-bar{
+    height: 100%;
+    width: 340px;
+    white-space: nowrap;
+    overflow: hidden; 
+    overflow-x: scroll;
+    span {
+      padding: 0 10px;
+    }
+    .active {
+      color: #f85959;
+      font-weight: 700;
+    }
+  }
+  .top-menu-more-btn {
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    height: 30px;
+    width: 30px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+/* .topbar-wrapper {
     height: 40px;
     line-height: 40px;
     color: #222222;
@@ -83,7 +118,7 @@ export default {
 .top-menu-more-btn img{
     height: 100%;
     width: 100%;
-}
+} */
 
 </style>
 

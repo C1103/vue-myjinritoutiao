@@ -33,7 +33,7 @@
               <!-- <p class="wes-1">{{item.intro}}</p> -->
             <!-- </div> -->
             <div class="item-image">
-              <img :src="img" :alt="img" :style="{width: item.images.length === 3 ? '30%':'25%'}" v-for="img in item.images">
+              <img :src="img" :alt="img" :style="{width: item.images.length === 3 ? '31%':'25%'}" v-for="img in item.images">
             </div>
         
               <div class="small-box">
@@ -101,13 +101,70 @@
     
   }
 </script>
-<style scoped>
+<style lang="less" scoped>
 .home-wrapper {
   overflow-y: scroll;
+  .home-container{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 50px;
+    ul {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      li {
+        padding: 0 16px;
+        list-style: none;
+        .item-box {
+          width: 100%;
+          height: 100%;
+          border-bottom: 1px solid #e8e8e8;
+          position: relative;
+          h4 {
+          margin: 10px auto;
+          }
+          .small-box {
+                color: #999999;
+                font-size: 10px;
+                margin-bottom: 10px;
+          }
+          .item-left {
+            width: 250px;
+          }
+          .item-right {
+            width: 80px;
+            height: 70px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .item-image {
+            width: 100%;
+            height: 70px;
+            margin-bottom: 10px;
+            img {
+            height: 70px;
+            width: 90px;
+            }
+            :nth-child(2){
+             margin: 0 10px;
+            } 
+          }
+          
+        }
+      }
+    }
+  }
+} 
+ /* .home-wrapper {
+  overflow-y: scroll;
 }
-/* .home-container{
-  position: relative;
-} */
+
 .home-container, .home-container ul {
   width: 100%;
   margin: 0;
@@ -134,7 +191,7 @@
   width: 250px;
 }
 .item-box .item-right {
-  width: 80px;
+  width: 90px;
   height: 70px;
   position: absolute;
   top: 0;
@@ -160,6 +217,6 @@
 }
 .item-image :nth-child(2){
   margin: 0 10px;
-}
+}  */
 
 </style>
