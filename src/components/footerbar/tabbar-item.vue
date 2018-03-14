@@ -38,25 +38,4 @@
   color: #f85959;
   }
 }
-/* .m-tabbar-item {
-  flex: 1;
-  text-align: center;
-}
-.m-tabbar-item-icon{
-  display:block;
-  padding-top:2px;
-}
-img{
-  width:26px;
-  height: 26px;
-}
-.m-tabbar-item-text{
-  display: block;
-  font-size: 8px;
-  color: #505050;
-}
-.m-tabbar-item.is-active .m-tabbar-item-text {
-  color: #f85959;
-} */
-
 </style>

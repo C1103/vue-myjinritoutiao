@@ -33,23 +33,26 @@ export const constantRouterMap = [
     { 
         path: '/headline',  
         meta: { page: true},
-        component: _import_('Layout/index'),
-        redirect: '/',
-        children: [
-            { path: '/', component: _import_('Headline/index'), name: '微头条' }
-        ]
+        component: _import_('Headline/index'),
+        name: '微头条'
     },
     { 
         path: '/account', 
         meta: { page: true}, 
         component: _import_('Account/index'),
-        name: '个人中心'
+        name: '小视频'
     },
     { 
         path: '/search', 
         name: '搜索', 
         meta: { slide: 1 },
         component: _import_('Search/index')
+    },
+    { 
+        path: '/article/:id', 
+        name: '文章', 
+        meta: { slide: 1 },
+        component: _import_('Article/index')
     },
 ]
 export const asyncRouterMap = [

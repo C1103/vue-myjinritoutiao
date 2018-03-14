@@ -3,11 +3,9 @@
     <Topbar :messList="topbarList" :selected="selectTopbar" @changeTopbar="changebar"></Topbar>
     <article class="video-wrapper">
         <div class="video-container">
-            <section class="item" v-for="(item, index) in news">
+            <section class="item" v-for="(item, index) in news" :key="index">
                 <div class="video">
                     <video :src="item.video"></video>
-
-                    <!-- canvas代替video播放 -->
                     <div class="canvas-video bg-cover" :style="{backgroundImage: `url(${item.images})`}">
                         <canvas @click="pause(index, item)"></canvas>
                     </div>
@@ -18,7 +16,6 @@
                     </div>
                     <div class="play" @click="play(index, item)" v-show="!item.playBol">
                         <img src="../../assets/images/play.png" alt="">
-                        <!-- <Icon name="play"></Icon> -->
                     </div>
                     <time v-show="!item.playBol">{{item.time}}</time>
                     <div class="avatar bg-cover-all" v-show="!item.playBol" :style="{backgroundImage: `url(${item.image})`}"></div>
@@ -29,18 +26,15 @@
                         <div @click="item.attention = !item.attention">
                             <div v-if="item.attention">已关注</div>
                             <div v-else>
-                                <!-- <Icon name="attention"></Icon> -->
                                 <img src="../../assets/images/focus.png" alt="">
                                  <span>关注</span> 
                             </div>
                         </div>
                         <div>
-                            <!-- <Icon name="custom-comment"></Icon> -->
                             <img src="../../assets/images/comment.png" alt="">
                             <span>{{item.comment_num || '评论'}}</span>
                         </div>
                         <div>
-                            <!-- <Icon name="More"></Icon> -->
                             <img src="../../assets/images/more.png" alt="">
                         </div>
                     </div>
@@ -61,7 +55,6 @@ export default {
     return {
       topbarList: ['推荐','音乐','搞笑','社会','小品','生活','电影','娱乐','呆萌','游戏','开眼','火山视频','广场舞'],
       selectTopbar: 0,
-    //   list: [],
       news:{},
     }
   },
@@ -71,21 +64,6 @@ export default {
     created () {
       this.$store.dispatch('getVideoList');
     },
-//   beforeCreate() {
-//       this.$axios.get('https://www.easy-mock.com/mock/5a97f7de41bb370817801652/jinritoutiao/video/list')
-//       .then((response) => {
-//         console.log(response);
-//         this.list = response.data.data;
-//         this.$nextTick(() => {
-//         this.news = this.list[this.topbarList[this.selectTopbar]];
-//         console.log(this.news.length)
-//         })
-//       })
-//       .catch((error) => {
-//         console.log(error)
-//       })
-//     },
-
   methods: {
     changebar(index) {
         this.selectTopbar = index
@@ -118,10 +96,11 @@ export default {
                 })
             }
   },
-    
   watch: {
       newsList(newList, oldList) {
+          console.log(newList)
         this.news = newList[this.topbarList[this.selectTopbar]]
+        console.log(this.news)
       },
       selectTopbar(newVal, oldVal) {
         this.news = this.newsList[this.topbarList[newVal]]

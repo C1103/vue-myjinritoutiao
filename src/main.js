@@ -14,6 +14,17 @@ import store from './store'
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
+
+Vue.prototype.back = (route) => {
+    route.animate = 2
+    history.go(-1)
+}
+
+// 跳转文章页
+Vue.prototype.skip = (route, id) => {
+    route.push('/article/'+id)
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
